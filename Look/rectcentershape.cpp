@@ -1,16 +1,16 @@
-#include "rectshape.h"
+#include "rectcentershape.h"
 
-RectShape::RectShape()
+RectCenterShape::RectCenterShape()
 {
 
 }
 
-void RectShape::draw(QPainter* painter)
+void RectCenterShape::draw(QPainter* painter)
 {
     painter->drawRect(rect);
 }
 
-QVector<Anchor> RectShape::getAnchors()
+QVector<Anchor> RectCenterShape::getAnchors()
 {
     QVector<Anchor> result;
     result.resize(5);
@@ -27,20 +27,21 @@ QVector<Anchor> RectShape::getAnchors()
     return result;
 }
 
-int RectShape::basePointsCount()
+int RectCenterShape::basePointsCount()
 {
     return 2;
 }
 
-void RectShape::setPoint(int n, QPoint p)
+void RectCenterShape::setPoint(int n, QPoint p)
 {
     if (n == 1){
-        rect.setX(p.x());
-        rect.setY(p.y());
-        rect.setWidth(0);
-        rect.setHeight(0);
+        center = p;
     } else if (n == 2){
-        rect.setWidth(p.x() - rect.x());
-        rect.setHeight(p.y() - rect.y());
+        int xSide = p.x() - center.x();
+        int ySide = p.y() - center.y();
+        rect.setX(center.x() - xSide);
+        rect.setY(center.y() - ySide);
+        rect.setWidth(xSide*2+1);
+        rect.setHeight(ySide*2+1);
     }
 }

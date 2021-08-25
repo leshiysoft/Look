@@ -16,7 +16,6 @@ protected:
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
     void startDrawShape(Shape* shape);
 
 private:
@@ -28,6 +27,11 @@ signals:
 
 public slots:
     void startDrawRect();
+    void startDrawCenterRect();
+    void startDrawLine();
+    void startDrawCenterLine();
+    void startDrawCircle();
+    void startDrawCircle3();
 
 };
 

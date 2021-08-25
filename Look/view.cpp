@@ -1,5 +1,10 @@
 #include "view.h"
 #include "rectshape.h"
+#include "rectcentershape.h"
+#include "lineshape.h"
+#include "circleshape.h"
+#include "circle3shape.h"
+#include "linecentershape.h"
 #include "anchorgetter.h"
 
 #include <QSizePolicy>
@@ -12,6 +17,7 @@ View::View(QWidget *parent) : QWidget(parent)
 {
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     resize(600,600);
+    parent->resize(650,650);
     setBackgroundRole(QPalette::Background);
     currentShape = nullptr;
     setMouseTracking(true);
@@ -41,12 +47,10 @@ void View::paintEvent(QPaintEvent *event)
         painter.setPen(redpen);
         currentShape->draw(&painter);
     }
-    qDebug() << "painted";
 }
 
 void View::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "Press: (" << event->x() << ", " << event->y() << ")";
     if (currentShape)
     {
         Anchor an;
@@ -69,7 +73,6 @@ void View::mousePressEvent(QMouseEvent *event)
 
 void View::mouseMoveEvent(QMouseEvent *event)
 {
-    qDebug() << "Move: (" << event->x() << ", " << event->y() << ")";
     lastPoint = event->pos();
     if (currentShape)
     {
@@ -84,17 +87,41 @@ void View::mouseMoveEvent(QMouseEvent *event)
     repaint();
 }
 
-void View::mouseReleaseEvent(QMouseEvent *event)
-{
-    qDebug() << "Release: (" << event->x() << ", " << event->y() << ")";
-}
-
-void View::startDrawRect()
+void View::startDrawShape(Shape* shape)
 {
     if (currentShape){
         delete currentShape;
     }
     currentPoint = 1;
-    qDebug() << "start draw rect";
-    currentShape = new RectShape();
+    currentShape = shape;
+}
+
+void View::startDrawRect()
+{
+    startDrawShape(new RectShape());
+}
+
+void View::startDrawCenterRect()
+{
+    startDrawShape(new RectCenterShape());
+}
+
+void View::startDrawLine()
+{
+    startDrawShape(new LineShape());
+}
+
+void View::startDrawCenterLine()
+{
+    startDrawShape(new LineCenterShape());
+}
+
+void View::startDrawCircle()
+{
+    startDrawShape(new CircleShape());
+}
+
+void View::startDrawCircle3()
+{
+    startDrawShape(new Circle3Shape());
 }

@@ -11,10 +11,15 @@ CONFIG += c++11
 SOURCES += \
     anchor.cpp \
     anchorgetter.cpp \
+    circle3shape.cpp \
+    circleshape.cpp \
+    linecentershape.cpp \
+    lineshape.cpp \
     main.cpp \
     mainwindow.cpp \
     model.cpp \
     modelvisitor.cpp \
+    rectcentershape.cpp \
     rectshape.cpp \
     shape.cpp \
     view.cpp
@@ -22,9 +27,14 @@ SOURCES += \
 HEADERS += \
     anchor.h \
     anchorgetter.h \
+    circle3shape.h \
+    circleshape.h \
+    linecentershape.h \
+    lineshape.h \
     mainwindow.h \
     model.h \
     modelvisitor.h \
+    rectcentershape.h \
     rectshape.h \
     shape.h \
     view.h
