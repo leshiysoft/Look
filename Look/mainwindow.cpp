@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     rectmenu->addAction("По центру и углу", view, SLOT(startDrawCenterRect()));
     menuBar()->addMenu(rectmenu);
 
-    QMenu* circlemenu = new QMenu("Окружность");
+    QMenu* circlemenu = new QMenu("Круг");
     circlemenu->addAction("По центру и точке", view, SLOT(startDrawCircle()));
     circlemenu->addAction("По трем точкам", view, SLOT(startDrawCircle3()));
     menuBar()->addMenu(circlemenu);
