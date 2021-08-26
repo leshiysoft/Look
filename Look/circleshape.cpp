@@ -15,6 +15,7 @@ QVector<Anchor> CircleShape::getAnchors()
     QVector<Anchor> result;
     result.resize(5);
     result[0].x = center.x();
+    result[0].y = center.y() + 1;
     result[0].y = center.y();
     result[1].x = center.x() + radius;
     result[1].y = center.y();
