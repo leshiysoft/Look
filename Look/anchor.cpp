@@ -8,7 +8,7 @@ Anchor::Anchor(int _x, int _y)
 
 void Anchor::draw(QPainter* painter)
 {
-    painter->drawRect(x-5, y-5, 10,10);
+    painter->drawRect(x-5, y-5, 10, 10);
 }
 
 QPoint Anchor::toPoint()

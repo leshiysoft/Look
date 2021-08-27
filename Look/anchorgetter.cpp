@@ -22,8 +22,8 @@ bool AnchorGetter::getNearestAnchor(QPoint point, Anchor& _anchor)
     bool result = false;
     foreach(Anchor anchor, anchors)
     {
-        int theDistance = ((point.x() - anchor.x) * (point.x() - anchor.x)) + ((point.y() - anchor.y)*(point.y() - anchor.y));
-        if ( theDistance < distance){
+        int theDistance = ((point.x() - anchor.x) * (point.x() - anchor.x)) + ((point.y() - anchor.y) * (point.y() - anchor.y));
+        if (theDistance < distance){
             distance = theDistance;
             result = true;
             _anchor = anchor;
